@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbTallerModelStoreContainer" CdmEntityContainer="dbTallerEntities">
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="dbTallerModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="Ci" ColumnName="Ci" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="clienteID" ColumnName="clienteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleOrdenCs">
+      <EntityTypeMapping TypeName="dbTallerModel.DetalleOrdenC">
+        <MappingFragment StoreEntitySet="DetalleOrdenC">
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="detalleOrdenCID" ColumnName="detalleOrdenCID" />
+          <ScalarProperty Name="materialID" ColumnName="materialID" />
+          <ScalarProperty Name="ordenCompraID" ColumnName="ordenCompraID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleServicios">
+      <EntityTypeMapping TypeName="dbTallerModel.DetalleServicio">
+        <MappingFragment StoreEntitySet="DetalleServicio">
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
+          <ScalarProperty Name="detalleServicioID" ColumnName="detalleServicioID" />
+          <ScalarProperty Name="tipoServiciosID" ColumnName="tipoServiciosID" />
+          <ScalarProperty Name="ordenServicioID" ColumnName="ordenServicioID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleTecnicoes">
+      <EntityTypeMapping TypeName="dbTallerModel.DetalleTecnico">
+        <MappingFragment StoreEntitySet="DetalleTecnico">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="detalleTecnicoID" ColumnName="detalleTecnicoID" />
+          <ScalarProperty Name="tecnicoID" ColumnName="tecnicoID" />
+          <ScalarProperty Name="ordenServicioID" ColumnName="ordenServicioID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Especialidads">
+      <EntityTypeMapping TypeName="dbTallerModel.Especialidad">
+        <MappingFragment StoreEntitySet="Especialidad">
+          <ScalarProperty Name="Especialidad1" ColumnName="Especialidad" />
+          <ScalarProperty Name="especialidadID" ColumnName="especialidadID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facturas">
+      <EntityTypeMapping TypeName="dbTallerModel.Factura">
+        <MappingFragment StoreEntitySet="Factura">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="Nro" ColumnName="Nro" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="facturaID" ColumnName="facturaID" />
+          <ScalarProperty Name="ordenServicioID" ColumnName="ordenServicioID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lugars">
+      <EntityTypeMapping TypeName="dbTallerModel.Lugar">
+        <MappingFragment StoreEntitySet="Lugar">
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Lugar1" ColumnName="Lugar" />
+          <ScalarProperty Name="lugarID" ColumnName="lugarID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materials">
+      <EntityTypeMapping TypeName="dbTallerModel.Material">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="materialID" ColumnName="materialID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenCompras">
+      <EntityTypeMapping TypeName="dbTallerModel.OrdenCompra">
+        <MappingFragment StoreEntitySet="OrdenCompra">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="ordenCompraID" ColumnName="ordenCompraID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenServicios">
+      <EntityTypeMapping TypeName="dbTallerModel.OrdenServicio">
+        <MappingFragment StoreEntitySet="OrdenServicio">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="ordenServicioID" ColumnName="ordenServicioID" />
+          <ScalarProperty Name="clienteID" ColumnName="clienteID" />
+          <ScalarProperty Name="lugarID" ColumnName="lugarID" />
+          <ScalarProperty Name="ordenCompraID" ColumnName="ordenCompraID" />
+          <ScalarProperty Name="vehiculoID" ColumnName="vehiculoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tecnicoes">
+      <EntityTypeMapping TypeName="dbTallerModel.Tecnico">
+        <MappingFragment StoreEntitySet="Tecnico">
+          <ScalarProperty Name="Ci" ColumnName="Ci" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="tecnicoID" ColumnName="tecnicoID" />
+          <ScalarProperty Name="especialidadID" ColumnName="especialidadID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoServicios">
+      <EntityTypeMapping TypeName="dbTallerModel.TipoServicio">
+        <MappingFragment StoreEntitySet="TipoServicios">
+          <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+          <ScalarProperty Name="tipoServiciosID" ColumnName="tipoServiciosID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehiculoes">
+      <EntityTypeMapping TypeName="dbTallerModel.Vehiculo">
+        <MappingFragment StoreEntitySet="Vehiculo">
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="vehiculoID" ColumnName="vehiculoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbTallerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="clienteID" />
+    </Key>
+    <Property Name="Ci" Type="Int32" />
+    <Property Name="Correo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNac" Type="DateTime" Precision="3" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Telefono" Type="Int32" />
+    <Property Name="clienteID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrdenServicios" Relationship="Self.FK_OrdenServicio_Cliente" FromRole="Cliente" ToRole="OrdenServicio" />
+  </EntityType>
+  <EntityType Name="DetalleOrdenC">
+    <Key>
+      <PropertyRef Name="detalleOrdenCID" />
+    </Key>
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Subtotal" Type="Int32" />
+    <Property Name="detalleOrdenCID" Type="Int32" Nullable="false" />
+    <Property Name="materialID" Type="Int32" />
+    <Property Name="ordenCompraID" Type="Int32" />
+    <NavigationProperty Name="Material" Relationship="Self.FK_DetalleOrdenC_Material" FromRole="DetalleOrdenC" ToRole="Material" />
+    <NavigationProperty Name="OrdenCompra" Relationship="Self.FK_DetalleOrdenC_OrdenCompra" FromRole="DetalleOrdenC" ToRole="OrdenCompra" />
+  </EntityType>
+  <EntityType Name="DetalleServicio">
+    <Key>
+      <PropertyRef Name="detalleServicioID" />
+    </Key>
+    <Property Name="Costo" Type="Int32" />
+    <Property Name="Tiempo" Type="Int32" />
+    <Property Name="detalleServicioID" Type="Int32" Nullable="false" />
+    <Property Name="tipoServiciosID" Type="Int32" />
+    <Property Name="ordenServicioID" Type="Int32" />
+    <NavigationProperty Name="OrdenServicio" Relationship="Self.FK_DetalleServicio_OrdenServicio" FromRole="DetalleServicio" ToRole="OrdenServicio" />
+    <NavigationProperty Name="TipoServicio" Relationship="Self.FK_DetalleServicio_TipoServicios" FromRole="DetalleServicio" ToRole="TipoServicios" />
+  </EntityType>
+  <EntityType Name="DetalleTecnico">
+    <Key>
+      <PropertyRef Name="detalleTecnicoID" />
+    </Key>
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="detalleTecnicoID" Type="Int32" Nullable="false" />
+    <Property Name="tecnicoID" Type="Int32" />
+    <Property Name="ordenServicioID" Type="Int32" />
+    <NavigationProperty Name="OrdenServicio" Relationship="Self.FK_DetalleTecnico_OrdenServicio" FromRole="DetalleTecnico" ToRole="OrdenServicio" />
+    <NavigationProperty Name="Tecnico" Relationship="Self.FK_DetalleTecnico_Tecnico" FromRole="DetalleTecnico" ToRole="Tecnico" />
+  </EntityType>
+  <EntityType Name="Especialidad">
+    <Key>
+      <PropertyRef Name="especialidadID" />
+    </Key>
+    <Property Name="Especialidad1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="especialidadID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Tecnicoes" Relationship="Self.FK_Tecnico_Especialidad" FromRole="Especialidad" ToRole="Tecnico" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="facturaID" />
+    </Key>
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Nit" Type="Int32" />
+    <Property Name="Nro" Type="Int32" />
+    <Property Name="RazonSocial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="facturaID" Type="Int32" Nullable="false" />
+    <Property Name="ordenServicioID" Type="Int32" />
+    <NavigationProperty Name="OrdenServicio" Relationship="Self.FK_Factura_OrdenServicio" FromRole="Factura" ToRole="OrdenServicio" />
+  </EntityType>
+  <EntityType Name="Lugar">
+    <Key>
+      <PropertyRef Name="lugarID" />
+    </Key>
+    <Property Name="Ciudad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Lugar1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="lugarID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrdenServicios" Relationship="Self.FK_OrdenServicio_Lugar" FromRole="Lugar" ToRole="OrdenServicio" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="materialID" />
+    </Key>
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Int32" />
+    <Property Name="materialID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetalleOrdenCs" Relationship="Self.FK_DetalleOrdenC_Material" FromRole="Material" ToRole="DetalleOrdenC" />
+  </EntityType>
+  <EntityType Name="OrdenCompra">
+    <Key>
+      <PropertyRef Name="ordenCompraID" />
+    </Key>
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="ordenCompraID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetalleOrdenCs" Relationship="Self.FK_DetalleOrdenC_OrdenCompra" FromRole="OrdenCompra" ToRole="DetalleOrdenC" />
+    <NavigationProperty Name="OrdenServicios" Relationship="Self.FK_OrdenServicio_OrdenCompra" FromRole="OrdenCompra" ToRole="OrdenServicio" />
+  </EntityType>
+  <EntityType Name="OrdenServicio">
+    <Key>
+      <PropertyRef Name="ordenServicioID" />
+    </Key>
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="ordenServicioID" Type="Int32" Nullable="false" />
+    <Property Name="clienteID" Type="Int32" />
+    <Property Name="lugarID" Type="Int32" />
+    <Property Name="ordenCompraID" Type="Int32" />
+    <Property Name="vehiculoID" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_OrdenServicio_Cliente" FromRole="OrdenServicio" ToRole="Cliente" />
+    <NavigationProperty Name="DetalleServicios" Relationship="Self.FK_DetalleServicio_OrdenServicio" FromRole="OrdenServicio" ToRole="DetalleServicio" />
+    <NavigationProperty Name="DetalleTecnicoes" Relationship="Self.FK_DetalleTecnico_OrdenServicio" FromRole="OrdenServicio" ToRole="DetalleTecnico" />
+    <NavigationProperty Name="Facturas" Relationship="Self.FK_Factura_OrdenServicio" FromRole="OrdenServicio" ToRole="Factura" />
+    <NavigationProperty Name="Lugar" Relationship="Self.FK_OrdenServicio_Lugar" FromRole="OrdenServicio" ToRole="Lugar" />
+    <NavigationProperty Name="OrdenCompra" Relationship="Self.FK_OrdenServicio_OrdenCompra" FromRole="OrdenServicio" ToRole="OrdenCompra" />
+    <NavigationProperty Name="Vehiculo" Relationship="Self.FK_OrdenServicio_Vehiculo" FromRole="OrdenServicio" ToRole="Vehiculo" />
+  </EntityType>
+  <EntityType Name="Tecnico">
+    <Key>
+      <PropertyRef Name="tecnicoID" />
+    </Key>
+    <Property Name="Ci" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="Int32" />
+    <Property Name="tecnicoID" Type="Int32" Nullable="false" />
+    <Property Name="especialidadID" Type="Int32" />
+    <NavigationProperty Name="DetalleTecnicoes" Relationship="Self.FK_DetalleTecnico_Tecnico" FromRole="Tecnico" ToRole="DetalleTecnico" />
+    <NavigationProperty Name="Especialidad" Relationship="Self.FK_Tecnico_Especialidad" FromRole="Tecnico" ToRole="Especialidad" />
+  </EntityType>
+  <EntityType Name="TipoServicio">
+    <Key>
+      <PropertyRef Name="tipoServiciosID" />
+    </Key>
+    <Property Name="Servicio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="tipoServiciosID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetalleServicios" Relationship="Self.FK_DetalleServicio_TipoServicios" FromRole="TipoServicios" ToRole="DetalleServicio" />
+  </EntityType>
+  <EntityType Name="Vehiculo">
+    <Key>
+      <PropertyRef Name="vehiculoID" />
+    </Key>
+    <Property Name="Año" Type="Int32" />
+    <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Matricula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Observacion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="vehiculoID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrdenServicios" Relationship="Self.FK_OrdenServicio_Vehiculo" FromRole="Vehiculo" ToRole="OrdenServicio" />
+  </EntityType>
+  <Association Name="FK_OrdenServicio_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="OrdenServicio" Type="Self.OrdenServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="clienteID" />
+      </Principal>
+      <Dependent Role="OrdenServicio">
+        <PropertyRef Name="clienteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrdenC_Material">
+    <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+    <End Role="DetalleOrdenC" Type="Self.DetalleOrdenC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="materialID" />
+      </Principal>
+      <Dependent Role="DetalleOrdenC">
+        <PropertyRef Name="materialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrdenC_OrdenCompra">
+    <End Role="OrdenCompra" Type="Self.OrdenCompra" Multiplicity="0..1" />
+    <End Role="DetalleOrdenC" Type="Self.DetalleOrdenC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenCompra">
+        <PropertyRef Name="ordenCompraID" />
+      </Principal>
+      <Dependent Role="DetalleOrdenC">
+        <PropertyRef Name="ordenCompraID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleServicio_OrdenServicio">
+    <End Role="OrdenServicio" Type="Self.OrdenServicio" Multiplicity="0..1" />
+    <End Role="DetalleServicio" Type="Self.DetalleServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenServicio">
+        <PropertyRef Name="ordenServicioID" />
+      </Principal>
+      <Dependent Role="DetalleServicio">
+        <PropertyRef Name="ordenServicioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleServicio_TipoServicios">
+    <End Role="TipoServicios" Type="Self.TipoServicio" Multiplicity="0..1" />
+    <End Role="DetalleServicio" Type="Self.DetalleServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoServicios">
+        <PropertyRef Name="tipoServiciosID" />
+      </Principal>
+      <Dependent Role="DetalleServicio">
+        <PropertyRef Name="tipoServiciosID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleTecnico_OrdenServicio">
+    <End Role="OrdenServicio" Type="Self.OrdenServicio" Multiplicity="0..1" />
+    <End Role="DetalleTecnico" Type="Self.DetalleTecnico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenServicio">
+        <PropertyRef Name="ordenServicioID" />
+      </Principal>
+      <Dependent Role="DetalleTecnico">
+        <PropertyRef Name="ordenServicioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleTecnico_Tecnico">
+    <End Role="Tecnico" Type="Self.Tecnico" Multiplicity="0..1" />
+    <End Role="DetalleTecnico" Type="Self.DetalleTecnico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tecnico">
+        <PropertyRef Name="tecnicoID" />
+      </Principal>
+      <Dependent Role="DetalleTecnico">
+        <PropertyRef Name="tecnicoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tecnico_Especialidad">
+    <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
+    <End Role="Tecnico" Type="Self.Tecnico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Especialidad">
+        <PropertyRef Name="especialidadID" />
+      </Principal>
+      <Dependent Role="Tecnico">
+        <PropertyRef Name="especialidadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_OrdenServicio">
+    <End Role="OrdenServicio" Type="Self.OrdenServicio" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenServicio">
+        <PropertyRef Name="ordenServicioID" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="ordenServicioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdenServicio_Lugar">
+    <End Role="Lugar" Type="Self.Lugar" Multiplicity="0..1" />
+    <End Role="OrdenServicio" Type="Self.OrdenServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lugar">
+        <PropertyRef Name="lugarID" />
+      </Principal>
+      <Dependent Role="OrdenServicio">
+        <PropertyRef Name="lugarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdenServicio_OrdenCompra">
+    <End Role="OrdenCompra" Type="Self.OrdenCompra" Multiplicity="0..1" />
+    <End Role="OrdenServicio" Type="Self.OrdenServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenCompra">
+        <PropertyRef Name="ordenCompraID" />
+      </Principal>
+      <Dependent Role="OrdenServicio">
+        <PropertyRef Name="ordenCompraID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdenServicio_Vehiculo">
+    <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+    <End Role="OrdenServicio" Type="Self.OrdenServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehiculo">
+        <PropertyRef Name="vehiculoID" />
+      </Principal>
+      <Dependent Role="OrdenServicio">
+        <PropertyRef Name="vehiculoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbTallerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="DetalleOrdenCs" EntityType="Self.DetalleOrdenC" />
+    <EntitySet Name="DetalleServicios" EntityType="Self.DetalleServicio" />
+    <EntitySet Name="DetalleTecnicoes" EntityType="Self.DetalleTecnico" />
+    <EntitySet Name="Especialidads" EntityType="Self.Especialidad" />
+    <EntitySet Name="Facturas" EntityType="Self.Factura" />
+    <EntitySet Name="Lugars" EntityType="Self.Lugar" />
+    <EntitySet Name="Materials" EntityType="Self.Material" />
+    <EntitySet Name="OrdenCompras" EntityType="Self.OrdenCompra" />
+    <EntitySet Name="OrdenServicios" EntityType="Self.OrdenServicio" />
+    <EntitySet Name="Tecnicoes" EntityType="Self.Tecnico" />
+    <EntitySet Name="TipoServicios" EntityType="Self.TipoServicio" />
+    <EntitySet Name="Vehiculoes" EntityType="Self.Vehiculo" />
+    <AssociationSet Name="FK_OrdenServicio_Cliente" Association="Self.FK_OrdenServicio_Cliente">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="OrdenServicio" EntitySet="OrdenServicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrdenC_Material" Association="Self.FK_DetalleOrdenC_Material">
+      <End Role="Material" EntitySet="Materials" />
+      <End Role="DetalleOrdenC" EntitySet="DetalleOrdenCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrdenC_OrdenCompra" Association="Self.FK_DetalleOrdenC_OrdenCompra">
+      <End Role="OrdenCompra" EntitySet="OrdenCompras" />
+      <End Role="DetalleOrdenC" EntitySet="DetalleOrdenCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleServicio_OrdenServicio" Association="Self.FK_DetalleServicio_OrdenServicio">
+      <End Role="OrdenServicio" EntitySet="OrdenServicios" />
+      <End Role="DetalleServicio" EntitySet="DetalleServicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleServicio_TipoServicios" Association="Self.FK_DetalleServicio_TipoServicios">
+      <End Role="TipoServicios" EntitySet="TipoServicios" />
+      <End Role="DetalleServicio" EntitySet="DetalleServicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleTecnico_OrdenServicio" Association="Self.FK_DetalleTecnico_OrdenServicio">
+      <End Role="OrdenServicio" EntitySet="OrdenServicios" />
+      <End Role="DetalleTecnico" EntitySet="DetalleTecnicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleTecnico_Tecnico" Association="Self.FK_DetalleTecnico_Tecnico">
+      <End Role="Tecnico" EntitySet="Tecnicoes" />
+      <End Role="DetalleTecnico" EntitySet="DetalleTecnicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tecnico_Especialidad" Association="Self.FK_Tecnico_Especialidad">
+      <End Role="Especialidad" EntitySet="Especialidads" />
+      <End Role="Tecnico" EntitySet="Tecnicoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_OrdenServicio" Association="Self.FK_Factura_OrdenServicio">
+      <End Role="OrdenServicio" EntitySet="OrdenServicios" />
+      <End Role="Factura" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdenServicio_Lugar" Association="Self.FK_OrdenServicio_Lugar">
+      <End Role="Lugar" EntitySet="Lugars" />
+      <End Role="OrdenServicio" EntitySet="OrdenServicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdenServicio_OrdenCompra" Association="Self.FK_OrdenServicio_OrdenCompra">
+      <End Role="OrdenCompra" EntitySet="OrdenCompras" />
+      <End Role="OrdenServicio" EntitySet="OrdenServicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdenServicio_Vehiculo" Association="Self.FK_OrdenServicio_Vehiculo">
+      <End Role="Vehiculo" EntitySet="Vehiculoes" />
+      <End Role="OrdenServicio" EntitySet="OrdenServicios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

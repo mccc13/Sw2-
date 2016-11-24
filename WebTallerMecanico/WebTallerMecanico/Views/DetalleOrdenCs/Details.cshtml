@@ -1,0 +1,50 @@
+﻿@model WebTallerMecanico.Models.DetalleOrdenC
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetalleOrdenC</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdenCompra.ordenCompraID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdenCompra.ordenCompraID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.detalleOrdenCID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

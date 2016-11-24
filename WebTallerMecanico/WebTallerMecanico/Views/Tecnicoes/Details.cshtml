@@ -1,0 +1,50 @@
+﻿@model WebTallerMecanico.Models.Tecnico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tecnico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ci)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ci)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Especialidad.Especialidad1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Especialidad.Especialidad1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tecnicoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

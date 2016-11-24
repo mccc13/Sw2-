@@ -1,0 +1,82 @@
+﻿@model WebTallerMecanico.Models.OrdenServicio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrdenServicio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lugar.Ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lugar.Ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrdenCompra.ordenCompraID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrdenCompra.ordenCompraID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehiculo.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehiculo.Color)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ordenServicioID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

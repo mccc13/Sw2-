@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b83b1a961c274d45ba230f2971d369b1" Name="Diagram1">
+        <EntityTypeShape EntityType="dbTallerModel.Cliente" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.DetalleOrdenC" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.DetalleServicio" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.DetalleTecnico" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.Especialidad" Width="1.5" PointX="3.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.Factura" Width="1.5" PointX="8.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.Lugar" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.Material" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.OrdenCompra" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.OrdenServicio" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.Tecnico" Width="1.5" PointX="6" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.TipoServicio" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbTallerModel.Vehiculo" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <AssociationConnector Association="dbTallerModel.FK_OrdenServicio_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_DetalleOrdenC_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_DetalleOrdenC_OrdenCompra" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_DetalleServicio_OrdenServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_DetalleServicio_TipoServicios" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_DetalleTecnico_OrdenServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_DetalleTecnico_Tecnico" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_Tecnico_Especialidad" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_Factura_OrdenServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_OrdenServicio_Lugar" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_OrdenServicio_OrdenCompra" ManuallyRouted="false" />
+        <AssociationConnector Association="dbTallerModel.FK_OrdenServicio_Vehiculo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

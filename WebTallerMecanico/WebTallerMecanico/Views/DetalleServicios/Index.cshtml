@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebTallerMecanico.Models.DetalleServicio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Costo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tiempo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenServicio.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoServicio.Servicio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Costo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tiempo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrdenServicio.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoServicio.Servicio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.detalleServicioID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.detalleServicioID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.detalleServicioID })
+        </td>
+    </tr>
+}
+
+</table>
